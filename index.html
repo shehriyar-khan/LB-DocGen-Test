@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document Generator (PDF + DOCX)</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- PDF: jsPDF -->
+  <script defer src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+  <!-- DOCX: docx + FileSaver -->
+  <script defer src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <header class="header">
+    <div>
+      <h1>Document Generator</h1>
+      <p>Fill the form → choose a doc type → download as PDF or Word.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Input Fields</h2>
+
+      <form id="docForm" class="grid" autocomplete="on">
+        <label>
+          Full Name <span class="req">*</span>
+          <input id="fullName" name="fullName" type="text" placeholder="Jane Doe" required />
+        </label>
+
+        <label>
+          Company / Organization
+          <input id="company" name="company" type="text" placeholder="Acme Inc." />
+        </label>
+
+        <label>
+          Email
+          <input id="email" name="email" type="email" placeholder="jane@acme.com" />
+        </label>
+
+        <label>
+          Address
+          <input id="address" name="address" type="text" placeholder="123 Main St, City, ST" />
+        </label>
+
+        <label>
+          Date
+          <input id="date" name="date" type="date" />
+        </label>
+
+        <label>
+          Output Format
+          <select id="format" name="format">
+            <option value="pdf">PDF (.pdf)</option>
+            <option value="docx">Word (.docx)</option>
+          </select>
+        </label>
+
+        <label class="full">
+          Notes / Details (optional)
+          <textarea id="notes" name="notes" rows="4" placeholder="Any extra info..."></textarea>
+        </label>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Generate a Document</h2>
+      <div class="btnRow">
+        <button class="btn" data-doc="nda">Generate NDA</button>
+        <button class="btn" data-doc="invoice">Generate Invoice</button>
+        <button class="btn" data-doc="letter">Generate Letter</button>
+      </div>
+
+      <div class="preview">
+        <div class="previewHeader">
+          <h3>Preview</h3>
+          <small>(Preview is plain text; PDF/DOCX downloads.)</small>
+        </div>
+        <pre id="previewBox">Fill out the form and click a document button.</pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>Runs on GitHub Pages • Generates PDF + DOCX in your browser</small>
+  </footer>
+</body>
+</html>
